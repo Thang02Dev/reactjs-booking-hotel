@@ -62,7 +62,7 @@ function Header(props) {
               href="/"
               className={`p-[8px] cursor-pointer ${hover} transition-all rounded-md leading-5`}
             >
-              VI/VND
+              VI | VND
             </a>
             <a
               href="/"
@@ -98,7 +98,7 @@ function Header(props) {
             </a>
             <a
               href="/"
-              className={`p-[8px] rounded-md bg-[#0194f3] px-4 py-[10px] transition-all ${hover}:bg-blue-500 text-white`}
+              className={`p-[8px] rounded-md bg-[#0194f3] px-4 py-[10px] transition-all hover:bg-blue-500 text-white`}
             >
               Đăng ký
             </a>
