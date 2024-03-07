@@ -24,7 +24,7 @@ const Home = () => {
         <BockingOptions>
           <div className="text-white mt-[108px] w-[1242px]">
             <div className="mx-[12px] text-center mb-4">
-              <span className=" text-[32px] leading-[56px] font-bold ">
+              <span className=" text-[30px] leading-[56px] font-bold ">
                 Từ Đông Nam Á Đến Thế Giới, Trong Tầm Tay Bạn
               </span>
             </div>
@@ -67,7 +67,7 @@ const Home = () => {
                 ></ButtonCategory>
               </div>
             </div>
-            <div className="h-[122px] w-[100%]  bg-red-600 mt-[24px] flex">
+            <div className="h-[122px] w-[100%] mt-[24px] flex">
               <SearchHotel
                 typeInput="text"
                 index={1}

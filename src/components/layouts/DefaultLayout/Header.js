@@ -142,7 +142,7 @@ function Header(props) {
             <div
               className={`p-[8px] rounded-md ${hover} py-[10px] transition-all`}
             >
-              <a href="/">More</a>
+              <a href="/">Khác</a>
             </div>
           </div>
         </div>
