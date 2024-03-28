@@ -29,14 +29,12 @@ const Navbar = (props) => {
         </button> */}
         <div
           id="navbar"
-          className="animated md:hidden md:fixed md:top-0 md:w-full md:left-0 md:mt-16 md:border-t md:border-b md:border-gray-200 md:p-10 md:bg-white flex-1 pl-3 flex flex-row flex-wrap justify-between items-center md:flex-col md:items-center"
+          className="animated md:hidden md:fixed md:top-0 md:w-full md:left-0 md:mt-16 md:border-t md:border-b md:border-gray-200 md:p-10 md:bg-white flex-1 pl-3 flex flex-row flex-wrap justify-end items-center md:flex-col md:items-center"
         >
           <div className="text-gray-600 md:w-full md:flex md:flex-row md:justify-evenly md:pb-10 md:mb-10 md:border-b md:border-gray-200"></div>
 
-          <div className="flex flex-row-reverse items-center">
+          <div className="flex flex-row-reverse">
             <User></User>
-            {/* <Notifcation></Notifcation>
-            <Message></Message> */}
           </div>
         </div>
       </div>

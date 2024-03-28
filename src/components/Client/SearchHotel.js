@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import ButtonPlusMinus from "./ButtonPlusMinus";
 
 const SearchHotel = (props) => {
-  const RoundedClass = props.isFisrt ? "rounded-tl-2xl rounded-bl-2xl" : "";
+  // const RoundedClass = props.isFisrt ? "rounded-tl-2xl rounded-bl-2xl" : "";
 
   const [numberAdult, setNumberAdult] = useState(1);
   const [activeAdult, setActiveAdult] = useState(false);
@@ -71,7 +71,7 @@ const SearchHotel = (props) => {
     return () => {
       document.removeEventListener("mousedown", handler);
     };
-  });
+  }, []);
 
   return (
     <div className=" flex-auto my-[20px] relative">
@@ -91,20 +91,29 @@ const SearchHotel = (props) => {
               : handleClickAdress
           }
           type={props.typeInput}
-          className={`h-[50px] w-[100%] ${RoundedClass} p-[13px_8px_13px_40px] text-black placeholder:text-gray-300 font-medium text-[15px] border-solid
+          className={`h-[50px] w-[100%] p-[13px_8px_13px_40px] focus:border-blue-200 focus:border-[2px] text-black placeholder:text-gray-300 font-medium text-[15px] border-solid
         border-gray-500 border-opacity-25 border-y-[3px] border-x-[2px]
         outline-blue-300 outline-2
           hover:border-opacity-45 hover:border-black transition-all `}
           placeholder={props.placeholder}
-          value={`${numberAdult} người lớn, ${numberRoom} phòng`}
+          value={
+            props.value === 3
+              ? `${numberAdult} người lớn, ${numberRoom} phòng`
+              : props.value === 2
+              ? "02 thg 3 2024 - 03 thg 3 2024"
+              : ""
+          }
+          readOnly
+          // onChange={(e) => e.target.value}
+          // defaultValue={props.defaultValue}
         />
       </div>
-      <div
+      {/* <div
         id="location"
         className={`${
           props.index === 1 ? "" : "hidden"
         } w-[200px] h-[100px] bg-yellow-500`}
-      ></div>
+      ></div> */}
       <div
         id="date"
         className={`${
@@ -121,7 +130,7 @@ const SearchHotel = (props) => {
           <div className="flex items-center">
             <ButtonPlusMinus
               name="minus"
-              icon={<i class="fa-solid fa-minus"></i>}
+              icon={<i className="fa-solid fa-minus"></i>}
               onClick={handleMinusAdult}
               active={activeAdult}
             ></ButtonPlusMinus>
@@ -133,7 +142,7 @@ const SearchHotel = (props) => {
             </div>
             <ButtonPlusMinus
               name="plus"
-              icon={<i class="fa-solid fa-plus"></i>}
+              icon={<i className="fa-solid fa-plus"></i>}
               onClick={handlePlusAdult}
             ></ButtonPlusMinus>
           </div>
@@ -143,7 +152,7 @@ const SearchHotel = (props) => {
           <div className="flex items-center">
             <ButtonPlusMinus
               name="minus"
-              icon={<i class="fa-solid fa-minus"></i>}
+              icon={<i className="fa-solid fa-minus"></i>}
               onClick={handleMinusRoom}
               active={activeRoom}
             ></ButtonPlusMinus>
@@ -155,7 +164,7 @@ const SearchHotel = (props) => {
             </div>
             <ButtonPlusMinus
               name="plus"
-              icon={<i class="fa-solid fa-plus"></i>}
+              icon={<i className="fa-solid fa-plus"></i>}
               onClick={handlePlusRoom}
             ></ButtonPlusMinus>
           </div>

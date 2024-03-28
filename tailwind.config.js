@@ -3,13 +3,13 @@ module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     screens: {
-      sm: { max: "639px" },
+      sm: { max: "640px" },
 
-      md: { max: "767px" },
+      md: { max: "768px" },
 
-      lg: { max: "1023px" },
+      lg: { max: "1024px" },
 
-      xl: { max: "1279px" },
+      xl: { max: "1280px" },
     },
     fontFamily: {
       sans: ["Ubuntu", "Sans-serif"],

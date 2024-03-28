@@ -32,7 +32,7 @@ const Sidebar = (props) => {
             className="mb-3 py-1 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500"
           >
             <i className="fa fa-shopping-cart text-xs mr-2"></i>
-            thống kê thương mại
+            thống kê
           </a>
           <p className="uppercase text-xs text-gray-600 mb-4 mt-4 tracking-wider">
             danh mục - Thể loại

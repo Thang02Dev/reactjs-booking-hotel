@@ -8,7 +8,7 @@ const User = () => {
   };
   return (
     <>
-      <div classNameName="dropdown relative md:static">
+      <div className="dropdown relative md:static">
         <button
           onClick={handleClickProfile}
           className="menu-btn focus:outline-none focus:shadow-outline flex flex-wrap items-center"
