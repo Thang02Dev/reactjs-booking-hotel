@@ -149,7 +149,7 @@ const Category = () => {
                 datas.map((item, index) => {
                   return (
                     <tr
-                      key={index}
+                      key={item.id}
                       className="bg-white border-b  text-gray-900  dark:bg-gray-800 dark:border-gray-700  hover:bg-gray-50 dark:hover:bg-gray-600"
                     >
                       <th className="px-6 py-4">{index + 1}</th>
@@ -157,8 +157,10 @@ const Category = () => {
                       <td className="px-6 py-4">{item.icon}</td>
                       <td className="px-6 py-4">{item.position}</td>
                       <td className="px-6 py-4">
-                        {/* {item.active ? "true" : "false"} */}
-                        <label className="inline-flex items-center me-5 cursor-pointer">
+                        <label
+                          key={item.id}
+                          className="inline-flex items-center me-5 cursor-pointer"
+                        >
                           <input
                             onChange={() => handleChangedActive(item.id)}
                             type="checkbox"

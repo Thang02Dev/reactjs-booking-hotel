@@ -19,25 +19,29 @@ const ModalCreate = (props) => {
   const submitCreate = async () => {
     const response = await service().Create(form);
     if (response && response.status === 200) {
-      await props.getAll();
-      toast.success(
-        <span
-          className="font-medium text-[14px]"
-          style={{ fontFamily: '"Poppins", sans-serif' }}
-        >
-          <span className="font-semibold">Thêm</span> tiện ích{" "}
-          <span className="font-semibold">"{form.name}"</span> thành công!
-        </span>
-      );
+      if (response.data.error === 0) {
+        await props.getAll();
+        toast.success(
+          <span
+            className="font-medium text-[14px]"
+            style={{ fontFamily: '"Poppins", sans-serif' }}
+          >
+            <span className="font-semibold">Thêm</span> tiện ích{" "}
+            <span className="font-semibold">"{form.name}"</span> thành công!
+          </span>
+        );
+
+        props.setIsModalCreate(false);
+        setForm({
+          name: "",
+          utilityCategoryId: null,
+        });
+      } else {
+        toast.error(<AlertError mess={response.data.mess}></AlertError>);
+      }
     } else {
       toast.error(<AlertError></AlertError>);
     }
-
-    props.setIsModalCreate(false);
-    setForm({
-      name: "",
-      utilityCategoryId: null,
-    });
   };
 
   useEffect(() => {

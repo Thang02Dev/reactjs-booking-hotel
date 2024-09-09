@@ -1,12 +1,30 @@
-import React from "react";
-import service from "../../../services/category";
+import React, { useEffect, useState } from "react";
+import service from "../../../services/hotel";
+// import cateUtilityService from "../../../services/cateUtility";
+
 import { toast } from "react-toastify";
 import AlertError from "../AlertError";
 
 const ModalUpdate = (props) => {
+  // const [cates, setCates] = useState([]);
+  const [validPhone, setValidPhone] = useState(false);
+
+  // const getCateUtility = async () => {
+  //   const response = await cateUtilityService().getAll();
+  //   if (response && response.status === 200) setCates(response.data);
+  // };
+
   const submitUpdate = async () => {
-    props.setCate(props.cate);
-    const response = await service().Update(props.cate.id, props.cate);
+    const phoneRegex = /^0\d{9}$/;
+    if (phoneRegex.test(props.hotel.phone_Number)) {
+      console.log("sdt hop le");
+      setValidPhone(false);
+    } else {
+      setValidPhone(true);
+    }
+
+    props.setHotel(props.hotel);
+    const response = await service().Update(props.hotel.id, props.hotel);
     if (response && response.status === 200) {
       if (response.data.error === 0) {
         await props.getAll();
@@ -15,7 +33,8 @@ const ModalUpdate = (props) => {
             className="font-medium text-[14px]"
             style={{ fontFamily: '"Poppins", sans-serif' }}
           >
-            <span className="font-semibold">Cập nhật</span> danh mục thành công!
+            <span className="font-semibold">Cập nhật</span> khách sạn thành
+            công!
           </span>
         );
         props.setIsModalUpdate(false);
@@ -26,6 +45,9 @@ const ModalUpdate = (props) => {
       toast.error(<AlertError></AlertError>);
     }
   };
+  useEffect(() => {
+    // getCateUtility();
+  }, []);
   return (
     <>
       <div
@@ -44,7 +66,7 @@ const ModalUpdate = (props) => {
           >
             <div className="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
               <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
-                Cập nhật danh mục
+                Cập nhật khách sạn
               </h3>
               <button
                 onClick={() => props.setIsModalUpdate(false)}
@@ -70,51 +92,109 @@ const ModalUpdate = (props) => {
               </button>
             </div>
             <div className="p-4 md:p-5 grid gap-y-2">
-              <div className="text-sm grid gap-y-2">
-                <span>Tên danh mục</span>
-                <input
-                  className="w-full focus:border-[3px] focus:border-blue-200 border-neutral-300 h-[40px] px-3 text-sm rounded-md"
-                  type="text"
-                  placeholder="Nhập tên danh mục"
-                  required
-                  onChange={(e) =>
-                    props.setCate({ ...props.cate, name: e.target.value })
-                  }
-                  value={props.cate.name || ""}
-                />
-              </div>
-              <div className="md:flex-col md:gap-y-2 flex gap-x-4 ">
+              <div
+                className={`md:flex-col md:gap-y-2 flex gap-x-4 ${
+                  validPhone ? "mb-3" : ""
+                }`}
+              >
                 <div className="w-full text-sm grid gap-y-2">
-                  <span>Icon</span>
+                  <span>Tên khách sạn</span>
                   <input
                     className="w-full focus:border-[3px] focus:border-blue-200 border-neutral-300 h-[40px] px-3 text-sm rounded-md"
                     type="text"
-                    placeholder=" Vd: <i class='...'></i>"
+                    placeholder="Nhập tên khách sạn"
                     required
                     onChange={(e) =>
-                      props.setCate({ ...props.cate, icon: e.target.value })
+                      props.setHotel({ ...props.hotel, name: e.target.value })
                     }
-                    value={props.cate.icon || ""}
+                    value={props.hotel.name}
+                  />
+                </div>
+                <div className="relative w-full text-sm grid gap-y-2">
+                  <span>Số điện thoại liên hệ</span>
+                  <input
+                    type="number"
+                    className={`w-full ${
+                      validPhone ? "border-red-500 border-[2px] " : ""
+                    }  focus:border-[3px] focus:border-blue-200 border-neutral-300 h-[40px] px-3 text-sm rounded-md`}
+                    placeholder="Nhập số điện thoại"
+                    required
+                    onChange={(e) =>
+                      props.setHotel({
+                        ...props.hotel,
+                        phone_Number: e.target.value,
+                      })
+                    }
+                    value={props.hotel.phone_Number}
+                  />
+                  <span
+                    className={`absolute bottom-[-22px] ${
+                      validPhone ? "  text-red-600 " : "hidden"
+                    }`}
+                  >
+                    Số điện thoại không hợp lệ
+                  </span>
+                </div>
+              </div>
+              <div className="text-sm grid gap-y-2">
+                <span>Địa chỉ</span>
+                <input
+                  className="w-full focus:border-[3px] focus:border-blue-200 border-neutral-300 h-[40px] px-3 text-sm rounded-md"
+                  type="text"
+                  placeholder="Nhập địa chỉ"
+                  required
+                  onChange={(e) =>
+                    props.setHotel({ ...props.hotel, address: e.target.value })
+                  }
+                  value={props.hotel.address}
+                />
+              </div>
+              <div className="flex gap-x-4">
+                <div className="w-full text-sm grid gap-y-2">
+                  <span>Thời gian - Check In</span>
+                  <input
+                    className="w-full focus:border-[3px] focus:border-blue-200 border-neutral-300 h-[40px] px-3 text-sm rounded-md"
+                    type="time"
+                    placeholder="Nhập tên danh mục"
+                    onChange={(e) =>
+                      props.setHotel({
+                        ...props.hotel,
+                        checkIn_Time: e.target.value,
+                      })
+                    }
+                    value={props.hotel.checkIn_Time}
                   />
                 </div>
                 <div className="w-full text-sm grid gap-y-2">
-                  <span>Thứ tự vị trí</span>
+                  <span>Thời gian - Check Out</span>
                   <input
                     className="w-full focus:border-[3px] focus:border-blue-200 border-neutral-300 h-[40px] px-3 text-sm rounded-md"
-                    type="number"
-                    min={1}
-                    max={99}
-                    placeholder="Nhập số thứ tự"
-                    required
+                    type="time"
+                    placeholder="Nhập tên danh mục"
                     onChange={(e) =>
-                      props.setCate({
-                        ...props.cate,
-                        position: +e.target.value,
+                      props.setHotel({
+                        ...props.hotel,
+                        checkOut_Time: e.target.value,
                       })
                     }
-                    value={props.cate.position || 0}
+                    value={props.hotel.checkOut_Time}
                   />
                 </div>
+              </div>
+              <div className="text-sm grid gap-y-2">
+                <span>Thông tin giới thiệu</span>
+                <textarea
+                  className="w-full focus:border-[3px] focus:border-blue-200 border-neutral-300 h-[100px] p-3 text-sm rounded-md"
+                  placeholder="Nhập thông tin giới thiệu"
+                  required
+                  onChange={(e) =>
+                    props.setHotel({
+                      ...props.hotel,
+                      introduce: e.target.value,
+                    })
+                  }
+                  value={props.hotel.introduce}
+                ></textarea>
               </div>
             </div>
             <div className="sm:grid sm:gap-y-2 flex gap-x-2 p-4 md:p-5 border-t border-gray-200 rounded-b dark:border-gray-600">

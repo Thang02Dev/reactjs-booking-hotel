@@ -1,14 +1,13 @@
 import React from "react";
 
-const AlertError = () => {
+const AlertError = (props) => {
   return (
     <>
       <span
         className="font-medium text-[14px]"
         style={{ fontFamily: '"Poppins", sans-serif' }}
       >
-        <span className="font-semibold">Lỗi!</span> Có lỗi xảy ra khi thực hiện
-        chức năng
+        {props.mess || "Chức năng xảy ra lỗi"}
       </span>
     </>
   );

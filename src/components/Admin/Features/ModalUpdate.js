@@ -8,19 +8,24 @@ const ModalUpdate = (props) => {
     props.setFeature(props.feature);
     const response = await service().Update(props.feature.id, props.feature);
     if (response && response.status === 200) {
-      await props.getAll();
-      toast.success(
-        <span
-          className="font-medium text-[14px]"
-          style={{ fontFamily: '"Poppins", sans-serif' }}
-        >
-          <span className="font-semibold">Cập nhật</span> tính năng thành công!
-        </span>
-      );
+      if (response.data.error === 0) {
+        await props.getAll();
+        toast.success(
+          <span
+            className="font-medium text-[14px]"
+            style={{ fontFamily: '"Poppins", sans-serif' }}
+          >
+            <span className="font-semibold">Cập nhật</span> tính năng thành
+            công!
+          </span>
+        );
+        props.setIsModalUpdate(false);
+      } else {
+        toast.error(<AlertError mess={response.data.mess}></AlertError>);
+      }
     } else {
-      <AlertError></AlertError>;
+      toast.error(<AlertError></AlertError>);
     }
-    props.setIsModalUpdate(false);
   };
 
   return (

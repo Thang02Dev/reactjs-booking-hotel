@@ -17,19 +17,23 @@ const ModalUpdate = (props) => {
     props.setUtility(props.utility);
     const response = await service().Update(props.utility.id, props.utility);
     if (response && response.status === 200) {
-      await props.getAll();
-      toast.success(
-        <span
-          className="font-medium text-[14px]"
-          style={{ fontFamily: '"Poppins", sans-serif' }}
-        >
-          <span className="font-semibold">Cập nhật</span> tiện ích thành công!
-        </span>
-      );
+      if (response.data.error === 0) {
+        await props.getAll();
+        toast.success(
+          <span
+            className="font-medium text-[14px]"
+            style={{ fontFamily: '"Poppins", sans-serif' }}
+          >
+            <span className="font-semibold">Cập nhật</span> tiện ích thành công!
+          </span>
+        );
+        props.setIsModalUpdate(false);
+      } else {
+        toast.error(<AlertError mess={response.data.mess}></AlertError>);
+      }
     } else {
-      <AlertError></AlertError>;
+      toast.error(<AlertError></AlertError>);
     }
-    props.setIsModalUpdate(false);
   };
   useEffect(() => {
     getCateUtility();
