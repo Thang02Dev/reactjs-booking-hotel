@@ -5,3 +5,20 @@ a.active {
   border-radius: 8px;
   padding-left: 12px;
 }
+.loading {
+  border: 8px solid #eaeaea; /* Light grey */
+  border-top: 8px solid #5e5e5e; /* Blue */
+  border-radius: 50%;
+  width: 55px;
+  height: 55px;
+  animation: spin 1.2s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

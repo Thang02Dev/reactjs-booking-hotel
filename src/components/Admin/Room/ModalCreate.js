@@ -199,24 +199,37 @@ const ModalCreate = (props) => {
                     placeholder="Nhập giá phòng"
                     required
                     onChange={(e) =>
-                      setForm({ ...form, numberOfGuests: e.target.value })
+                      setForm({ ...form, price: e.target.value })
                     }
-                    value={form.numberOfGuests}
+                    value={form.price}
                   />
                 </div>
                 <div className="w-full text-sm grid gap-y-2">
-                  <span>Số lượng phòng</span>
+                  <span>Số lượng phòng sử dụng</span>
                   <input
                     className="w-full focus:border-[3px] focus:border-blue-200 border-neutral-300 h-[40px] px-3 text-sm rounded-md"
                     type="number"
                     placeholder="Nhập số lượng phòng"
                     required
                     onChange={(e) =>
-                      setForm({ ...form, numberOfGuests: e.target.value })
+                      setForm({ ...form, amount: e.target.value })
                     }
-                    value={form.numberOfGuests}
+                    value={form.amount}
                   />
                 </div>
+              </div>
+              <div className="text-sm grid gap-y-2">
+                <span>Mô tả</span>
+                <input
+                  className="w-full focus:border-[3px] focus:border-blue-200 border-neutral-300 h-[40px] px-3 text-sm rounded-md"
+                  type="text"
+                  placeholder="Nhập mô tả"
+                  required
+                  onChange={(e) =>
+                    setForm({ ...form, description: e.target.value })
+                  }
+                  value={form.description}
+                />
               </div>
             </div>
             <div className="sm:grid sm:gap-y-2 flex gap-x-2 p-4 md:p-5 border-t border-gray-200 rounded-b dark:border-gray-600">
