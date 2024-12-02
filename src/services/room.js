@@ -15,9 +15,9 @@ const RoomService = () => {
       console.error(error);
     }
   };
-  const getPage = async (page) => {
+  const getPage = async (id, page) => {
     try {
-      return await axios.get(`rooms/page/${page}`);
+      return await axios.get(`rooms/page/${page}?hotelId=` + id);
     } catch (error) {
       console.error(error);
     }
@@ -45,6 +45,13 @@ const RoomService = () => {
       console.error(error);
     }
   };
+  const ChangedActive = async (id) => {
+    try {
+      return await axios.post(`rooms/changed-active/${id}`);
+    } catch (error) {
+      console.error(error);
+    }
+  };
   return {
     getById,
     getAll,
@@ -52,6 +59,7 @@ const RoomService = () => {
     Delete,
     Create,
     getPage,
+    ChangedActive,
   };
 };
 

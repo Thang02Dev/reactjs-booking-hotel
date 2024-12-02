@@ -20,6 +20,7 @@
     "react-toastify": "^10.0.4",
     "sort-by": "^1.2.0",
     "styled-components": "^6.1.8",
+    "swiper": "^11.1.15",
     "tailwindcss-animatecss": "^0.2.7",
     "web-vitals": "^2.1.4"
   },

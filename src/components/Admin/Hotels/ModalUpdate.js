@@ -107,7 +107,7 @@ const ModalUpdate = (props) => {
                     onChange={(e) =>
                       props.setHotel({ ...props.hotel, name: e.target.value })
                     }
-                    value={props.hotel.name}
+                    defaultValue={props.hotel.name}
                   />
                 </div>
                 <div className="relative w-full text-sm grid gap-y-2">
@@ -125,7 +125,7 @@ const ModalUpdate = (props) => {
                         phone_Number: e.target.value,
                       })
                     }
-                    value={props.hotel.phone_Number}
+                    defaultValue={props.hotel.phone_Number}
                   />
                   <span
                     className={`absolute bottom-[-22px] ${
@@ -146,7 +146,7 @@ const ModalUpdate = (props) => {
                   onChange={(e) =>
                     props.setHotel({ ...props.hotel, address: e.target.value })
                   }
-                  value={props.hotel.address}
+                  defaultValue={props.hotel.address}
                 />
               </div>
               <div className="flex gap-x-4">
@@ -162,7 +162,7 @@ const ModalUpdate = (props) => {
                         checkIn_Time: e.target.value,
                       })
                     }
-                    value={props.hotel.checkIn_Time}
+                    defaultValue={props.hotel.checkIn_Time}
                   />
                 </div>
                 <div className="w-full text-sm grid gap-y-2">
@@ -177,7 +177,7 @@ const ModalUpdate = (props) => {
                         checkOut_Time: e.target.value,
                       })
                     }
-                    value={props.hotel.checkOut_Time}
+                    defaultValue={props.hotel.checkOut_Time}
                   />
                 </div>
               </div>
@@ -193,7 +193,7 @@ const ModalUpdate = (props) => {
                       introduce: e.target.value,
                     })
                   }
-                  value={props.hotel.introduce}
+                  defaultValue={props.hotel.introduce}
                 ></textarea>
               </div>
             </div>

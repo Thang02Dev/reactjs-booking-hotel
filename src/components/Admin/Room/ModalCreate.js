@@ -3,8 +3,10 @@ import service from "../../../services/room";
 import hotelService from "../../../services/hotel";
 import { toast } from "react-toastify";
 import AlertError from "../AlertError";
+import { useParams } from "react-router-dom";
 
 const ModalCreate = (props) => {
+  const { hotelid } = useParams();
   const [form, setForm] = useState({
     name: "",
     description: "",
@@ -14,7 +16,7 @@ const ModalCreate = (props) => {
     numberOfGuests: null,
     price: null,
     amount: null,
-    hotelId: null,
+    hotelId: parseInt(hotelid),
   });
   const [hotels, setHotels] = useState([]);
 
@@ -106,7 +108,7 @@ const ModalCreate = (props) => {
               </button>
             </div>
             <div className="p-4 md:p-5 grid gap-y-2">
-              <div className="text-sm grid gap-y-2">
+              {/* <div className="text-sm grid gap-y-2">
                 <span>Khách sạn</span>
                 <select
                   onChange={(e) =>
@@ -126,7 +128,7 @@ const ModalCreate = (props) => {
                         );
                       })}
                 </select>
-              </div>
+              </div> */}
               <div className="text-sm grid gap-y-2">
                 <span>Tên phòng</span>
                 <input

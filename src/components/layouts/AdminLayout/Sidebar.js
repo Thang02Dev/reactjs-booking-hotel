@@ -65,14 +65,14 @@ const Sidebar = (props) => {
             <i className="fa-solid fa-hotel text-xs mr-2"></i>
             danh sách khách sạn
           </NavLink>
-          <NavLink
+          {/* <NavLink
             onClick={() => props.setSidebar(false)}
             to={"/admin/phong"}
             className="mb-3 py-1 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500"
           >
             <i className="fa-solid fa-door-open text-xs mr-2"></i>
             danh sách phòng
-          </NavLink>
+          </NavLink> */}
           <NavLink
             onClick={() => props.setSidebar(false)}
             to={"/admin/tien-ich"}

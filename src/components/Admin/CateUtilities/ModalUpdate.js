@@ -80,7 +80,7 @@ const ModalUpdate = (props) => {
                   onChange={(e) =>
                     props.setCate({ ...props.cate, name: e.target.value })
                   }
-                  value={props.cate.name || ""}
+                  defaultValue={props.cate.name || ""}
                 />
               </div>
             </div>

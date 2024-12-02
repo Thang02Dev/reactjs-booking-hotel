@@ -13,6 +13,35 @@ a.active {
   height: 55px;
   animation: spin 1.2s linear infinite;
 }
+.flipped-text {
+  display: inline-block;
+  transform: rotate(180deg);
+}
+
+.limited-height {
+  max-height: 50px; /* Chiều cao giới hạn mặc định */
+  overflow: hidden; /* Ẩn nội dung vượt quá */
+  text-overflow: ellipsis; /* Dấu ... nếu bị cắt */
+  transition: max-height 2s ease; /* Hiệu ứng chuyển động */
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* Hiển thị tối đa 2 dòng */
+  -webkit-box-orient: vertical;
+  word-wrap: break-word;
+}
+
+.limited-height:hover {
+  max-height: 1000px; /* Tăng chiều cao đủ lớn khi hover */
+  overflow: visible; /* Hiển thị toàn bộ nội dung */
+  -webkit-line-clamp: unset; /* Bỏ giới hạn số dòng */
+  color: black;
+  transition: all 0.5s ease;
+}
+.bg-css-blue {
+  background-color: #235d9f;
+}
+.text-css-blue {
+  color: #235d9f;
+}
 
 @keyframes spin {
   0% {

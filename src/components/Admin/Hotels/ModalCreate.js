@@ -23,7 +23,7 @@ const ModalCreate = (props) => {
       fileimage: images.map((image) => image.file),
       position: 1,
       description: "Ảnh khách sạn",
-      hotelId: 10,
+      hotelId: 0,
       id: 1,
       image: "",
       active: true,
@@ -246,7 +246,7 @@ const ModalCreate = (props) => {
                     placeholder="Nhập tên khách sạn"
                     required
                     onChange={(e) => setForm({ ...form, name: e.target.value })}
-                    value={form.name}
+                    defaultValue={form.name}
                   />
                 </div>
                 <div className="relative w-full text-sm grid gap-y-2">
@@ -261,7 +261,7 @@ const ModalCreate = (props) => {
                     onChange={(e) =>
                       setForm({ ...form, phone_number: e.target.value })
                     }
-                    value={form.phone_number}
+                    defaultValue={form.phone_number}
                   />
                   <span
                     className={`absolute bottom-[-22px] ${
@@ -282,7 +282,7 @@ const ModalCreate = (props) => {
                   onChange={(e) =>
                     setForm({ ...form, address: e.target.value })
                   }
-                  value={form.address}
+                  defaultValue={form.address}
                 />
               </div>
               <div className="flex gap-x-4">
@@ -298,7 +298,7 @@ const ModalCreate = (props) => {
                         checkIn_time: e.target.value,
                       })
                     }
-                    value={form.checkIn_time}
+                    defaultValue={form.checkIn_time}
                   />
                 </div>
                 <div className="w-full text-sm grid gap-y-2">
@@ -313,7 +313,7 @@ const ModalCreate = (props) => {
                         CheckOut_time: e.target.value,
                       })
                     }
-                    value={form.CheckOut_time}
+                    defaultValue={form.CheckOut_time}
                   />
                 </div>
               </div>
@@ -326,7 +326,7 @@ const ModalCreate = (props) => {
                   onChange={(e) =>
                     setForm({ ...form, introduce: e.target.value })
                   }
-                  value={form.introduce}
+                  defaultValue={form.introduce}
                 ></textarea>
               </div>
             </div>

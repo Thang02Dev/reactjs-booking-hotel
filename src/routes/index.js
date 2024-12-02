@@ -30,7 +30,7 @@ const routes = [
     layout: AdminLayout,
   },
   {
-    path: "/admin/phong",
+    path: "/admin/phong/:hotelid",
     component: AdminRoom,
     layout: AdminLayout,
   },

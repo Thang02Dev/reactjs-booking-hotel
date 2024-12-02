@@ -1,23 +1,23 @@
 import axios from "./axiosConfig";
 
-const ImageHotelService = () => {
+const ImageRoomService = () => {
   const getById = async (id) => {
     try {
-      return await axios.get(`imagehotels/${id}`);
+      return await axios.get(`imagerooms/${id}`);
     } catch (error) {
       console.error(error);
     }
   };
   const getAll = async () => {
     try {
-      return await axios.get("imagehotels");
+      return await axios.get("imagerooms");
     } catch (error) {
       console.error(error);
     }
   };
   const getPage = async (page, data) => {
     try {
-      return await axios.get(`imagehotels/page/${page}?hotelId=${data}`);
+      return await axios.get(`imagerooms/page/${page}?roomId=${data}`);
     } catch (error) {
       console.error(error);
     }
@@ -25,7 +25,7 @@ const ImageHotelService = () => {
 
   const Update = async (id, data) => {
     try {
-      return await axios.put(`imagehotels/${id}`, data);
+      return await axios.put(`imagerooms/${id}`, data);
     } catch (error) {
       console.error(error);
     }
@@ -33,7 +33,7 @@ const ImageHotelService = () => {
 
   const Delete = async (id) => {
     try {
-      const response = await axios.delete(`imagehotels/${id}`);
+      const response = await axios.delete(`imagerooms/${id}`);
       return response;
     } catch (error) {
       console.error(error);
@@ -47,13 +47,13 @@ const ImageHotelService = () => {
         formData.append("files", image)
       );
       formData.append("Description", data.description);
-      formData.append("HotelId", data.hotelId);
+      formData.append("RoomId", data.roomId);
       formData.append("Id", data.id);
       formData.append("Position", data.position);
       formData.append("Active", data.active);
       formData.append("Image", data.image);
 
-      const response = await axios.post(`ImageHotels`, formData, {});
+      const response = await axios.post(`imagerooms`, formData, {});
 
       return response;
     } catch (error) {
@@ -62,7 +62,7 @@ const ImageHotelService = () => {
   };
   const ChangedActive = async (id) => {
     try {
-      return await axios.post(`ImageHotels/changed-active/${id}`);
+      return await axios.post(`imagerooms/changed-active/${id}`);
     } catch (error) {
       console.error(error);
     }
@@ -78,4 +78,4 @@ const ImageHotelService = () => {
   };
 };
 
-export default ImageHotelService;
+export default ImageRoomService;
